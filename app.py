@@ -24,4 +24,3 @@ if st.button('Calculate'):
     # Display the result
     st.write(f'The predicted sum is: {result[0][0]}')
 
-
