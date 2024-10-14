@@ -1,26 +1,40 @@
-import streamlit as st
-import numpy as np
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+# Simple calculator in Google Colab
 
-# Load the pre-trained model
-model = load_model('calculator_model.keras')
+def add(x, y):
+    return x + y
 
-# Title of the app
-st.title("Simple Calculator with AI")
+def subtract(x, y):
+    return x - y
 
-# Input fields for the two numbers
-num1 = st.number_input("Enter first number", min_value=0)
-num2 = st.number_input("Enter second number", min_value=0)
+def multiply(x, y):
+    return x * y
 
-# Calculate button
-if st.button('Calculate'):
-    # Prepare input for model prediction
-    input_data = np.array([[num1, num2]])
-    
-    # Get the predicted sum
-    result = model.predict(input_data)
-    
-    # Display the result
-    st.write(f'The predicted sum is: {result[0][0]}')
+def divide(x, y):
+    if y == 0:
+        return "Error! Division by zero."
+    return x / y
+
+print("Select operation:")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+# Take input from the user
+choice = input("Enter choice (1/2/3/4): ")
+
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+if choice == '1':
+    print(f"The result is: {add(num1, num2)}")
+elif choice == '2':
+    print(f"The result is: {subtract(num1, num2)}")
+elif choice == '3':
+    print(f"The result is: {multiply(num1, num2)}")
+elif choice == '4':
+    print(f"The result is: {divide(num1, num2)}")
+else:
+    print("Invalid input")
+
 
